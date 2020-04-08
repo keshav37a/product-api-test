@@ -1,0 +1,18 @@
+{
+  "name": "product-api",
+  "version": "1.0.0",
+  "description": "product api test",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.7",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Keshav Mathur",
+  "license": "ISC"
+}
