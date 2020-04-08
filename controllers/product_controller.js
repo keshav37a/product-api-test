@@ -1,7 +1,10 @@
 const Product = require('../models/product');
 
+
+//to get all products from the database
 module.exports.getProducts = function(req, res){
     console.log('getProducts called');
+    //using -_id to exclude _id from the result
     Product.find({}, '-_id', function(err, products){
         if(err){
             console.log(err);
@@ -17,13 +20,18 @@ module.exports.getProducts = function(req, res){
     })
 }
 
+
+//To create a new product
 module.exports.createProduct = function(req, res){
     console.log('createProduct called');
-    console.log(req.body);
+    let id = req.query.id;
+    let name = req.query.name;
+    let quantity = req.query.quantity;
+    // console.log(req.body);
     Product.create({
-        id: req.body.id,
-        name: req.body.name,
-        quantity: req.body.qty
+        id: id,
+        name: name,
+        quantity: quantity
     }, function(err, newProduct){
         if(err){
             console.log('err in creating product: ', err);
@@ -34,8 +42,8 @@ module.exports.createProduct = function(req, res){
             return res.status(200).json({
                 data:{
                     product:{
-                        name: req.body.name,
-                        quantity: req.body.qty
+                        name: newProduct.name,
+                        quantity: newProduct.quantity
                     }
                 }
             })
