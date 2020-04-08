@@ -7,8 +7,10 @@
 </head>
 <body>
     <h1>EJS</h1>
-    <div class="create-post">
-        <div>Create Post</div>
+    <div class="create-product">
+        <div>Get Products</div>
+        <div><a href="/products">Get Products</a></div>
+        <div>Create product</div>
         <form action="/products/create" method="POST">
             <div><input type="number" name="id" placeholder="id"></div>
             <div><input type="text" name="name" placeholder="product name"></div>
@@ -18,8 +20,8 @@
     </div>
 
     <br>
-    <div class="update-post">
-        <div>Update Post</div>
+    <div class="update-product">
+        <div>Update product</div>
         <form action="/products/update_quantity" method="POST">
             <div><input type="number" name="id" placeholder="id"></div>
             <div><input type="number" name="qty" placeholder="quantity"></div>
@@ -31,7 +33,7 @@
 
     <div class="delete-post">
         <div>Delete Post</div>
-        <form action="/products/create" method="POST">
+        <form action="/products/delete" method="GET">
             <div><input type="number" name="id" placeholder="id"></div>
             <button type="submit">Submit</button>
         </form>
