@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>EJS</h1>
+    <div class="create-post">
+        <div>Create Post</div>
+        <form action="/products/create" method="POST">
+            <div><input type="number" name="id" placeholder="id"></div>
+            <div><input type="text" name="name" placeholder="product name"></div>
+            <div><input type="number" name="qty" placeholder="quantity"></div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <br>
+    <div class="update-post">
+        <div>Update Post</div>
+        <form action="/products/update_quantity" method="POST">
+            <div><input type="number" name="id" placeholder="id"></div>
+            <div><input type="number" name="qty" placeholder="quantity"></div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <br>
+
+    <div class="delete-post">
+        <div>Delete Post</div>
+        <form action="/products/create" method="POST">
+            <div><input type="number" name="id" placeholder="id"></div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
