@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true
     }
-})
+}, { versionKey: false });
 
 const Product = mongoose.model('product', productSchema);
 module.exports = Product;

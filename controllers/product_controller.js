@@ -2,7 +2,7 @@ const Product = require('../models/product');
 
 module.exports.getProducts = function(req, res){
     console.log('getProducts called');
-    Product.find({}, function(err, products){
+    Product.find({}, '-_id', function(err, products){
         if(err){
             console.log(err);
         }
@@ -49,7 +49,10 @@ module.exports.deleteProduct = function(req, res){
     let id = req.params.id;
 
     Product.deleteOne({ id: id }, function (err) {
-        if(err) console.log(err);
+        if(err){
+            console.log(err);
+            
+        } 
         else{
             console.log("Successful deletion");
             return res.status(200).json({
@@ -63,7 +66,35 @@ module.exports.deleteProduct = function(req, res){
     
 }
 
-module.exports.updateProduct = function(req, res){
-    console.log('updateProduct called');
-    return res.status(400);
+module.exports.updateProduct = async function(req, res){
+
+    let param = req.params;
+    console.log(param);
+    let searchId = param.id;
+    
+    let queryParams = req.query;
+    let newQty = queryParams.number;
+    console.log(queryParams);
+    
+    try{
+        let product = await Product.findOne({id: searchId},'-_id');
+        if(product){
+            product.quantity = newQty;
+            product.save();
+            return res.status(200).json({
+                data:{ 
+                    product
+                },
+                message: 'updated successfully' 
+            });
+        }
+        else{
+            return res.status(404).json({
+                message: 'not found'
+            })
+        }
+    }
+    catch(err){
+        console.log('error');
+    }
 }
