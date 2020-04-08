@@ -24,6 +24,9 @@ module.exports.getProducts = function(req, res){
 //To create a new product
 module.exports.createProduct = function(req, res){
     console.log('createProduct called');
+
+    //using query parameters to create an object
+
     let id = req.query.id;
     let name = req.query.name;
     let quantity = req.query.quantity;
@@ -51,6 +54,8 @@ module.exports.createProduct = function(req, res){
     });
 }
 
+
+//to delete a product from the database
 module.exports.deleteProduct = function(req, res){
     let param = req.params;
     console.log(param);
@@ -74,6 +79,8 @@ module.exports.deleteProduct = function(req, res){
     
 }
 
+
+//To update a product using both query and params
 module.exports.updateProduct = async function(req, res){
 
     let param = req.params;
