@@ -70,12 +70,9 @@ module.exports.deleteProduct = async function(req, res){
 
 //To update a product using both query and params
 module.exports.updateProduct = async function(req, res){
-    console.log(req.params);
     let searchId = req.params.id;
-    
     let queryParams = req.query;
     let newQty = Number(queryParams.number);
-    console.log(queryParams);
     
     try{
         let product = await Product.findById(searchId);
