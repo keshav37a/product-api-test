@@ -9,7 +9,7 @@ router.get('/', productController.getProducts);
 router.post('/create', productController.createProduct);
 
 //To delete a product with the id
-router.delete('/delete/:id', productController.deleteProduct);
+router.delete('/:id', productController.deleteProduct);
 
 //To update a product with a specific quantity
 router.post('/:id/update_quantity', productController.updateProduct);

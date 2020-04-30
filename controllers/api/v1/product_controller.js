@@ -28,6 +28,14 @@ module.exports.createProduct = async function(req, res){
         //using body parameters to create an object
         let name = req.body.name;
         let quantity = req.body.quantity;
+
+        let product = await Product.findOne({name: name});
+        if(product){
+            return res.status(405).json({
+                message: 'Product already exists'
+            });
+        }
+
         let newProduct = await Product.create({name: name, quantity: quantity});
         let obj = {};
         obj.name = name;
@@ -56,7 +64,16 @@ module.exports.deleteProduct = async function(req, res){
         let deletedProduct = await Product.findByIdAndDelete(id);
         if(deletedProduct){
             return res.status(200).json({
-                message: 'products deleted'
+                data:{
+                    message: 'products deleted'
+                }
+            })
+        }
+        else{
+            return res.status(200).json({
+                data:{
+                    message: 'product not found'
+                }
             })
         }
     }
